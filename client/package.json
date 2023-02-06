@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "sass": "gulp sass"
+    "sass": "gulp watch"
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
