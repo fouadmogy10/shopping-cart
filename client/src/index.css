@@ -1,0 +1,24 @@
+*{
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box;
+}
+.layout{
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "main"
+    "footer"
+    ;
+    height: 100vh;
+    grid-template-rows: 56px 1fr 56px ;
+}
+header{
+    grid-area: header;
+}
+footer{
+    grid-area: footer;
+}
+main{
+    grid-area: main;
+}
