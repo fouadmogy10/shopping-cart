@@ -1,0 +1,4 @@
+.card img {
+  aspect-ratio: 3/2 !important;
+  bject-fit: contain !important;
+}
