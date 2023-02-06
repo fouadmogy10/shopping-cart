@@ -1,8 +1,10 @@
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { Col, Container, Row } from "react-bootstrap";
+import {  Container, Row } from "react-bootstrap";
 import Products from "./components/products/Products";
+
+import Filter from "./components/Filter/Filter";
 
 function App() {
   return (
@@ -10,13 +12,11 @@ function App() {
       <Header />
       <main>
         <Container>
-          <Row className="py-5">
-            <Col md="8" sm="7">
-              <Products/>
-            </Col>
-            <Col md="4" sm="5">
-              filter
-            </Col>
+          <Row className="py-5 align-items-center justify-content-center">
+            
+           <Filter/>
+              <Products />
+            
           </Row>
         </Container>
       </main>
