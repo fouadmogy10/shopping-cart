@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Col, Row, Button, Card } from "react-bootstrap";
 import "../../css/products/product.css";
 import { words } from "../../words";
-import data from "../../data.json";
-const Products = () => {
-  const [products, setproducts] = useState(null); 
-  useEffect(() => {
-    setproducts(data.products);
-  }, []);
+const Products = ({products}) => {
+  
 
   return (
     <>
+      <Row>
+
       
         {products
           ? products.map((item) => {
               return (
-                <Col key={item.id} md="4" sm="6" className="mb-3">
+                <Col key={item.id} md="3" sm="6" className="mb-3">
                   <Card>
                     <Card.Img variant="top" src={item.image} />
                     <Card.Body>
@@ -35,7 +33,7 @@ const Products = () => {
               );
             })
           : null}
-      
+      </Row>
       
     </>
   );
