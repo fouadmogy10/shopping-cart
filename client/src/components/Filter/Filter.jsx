@@ -1,33 +1,50 @@
-import React from 'react'
-import { Form } from 'react-bootstrap';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-function Filter() {
+import React from "react";
+import Card from "react-bootstrap/Card";
+import data from "../../data.json";
+import { Col, Form } from "react-bootstrap";
+function Filter({ size, handelFilterBySize, handelFilterByOrder, sort }) {
   return (
     <>
-      <Card className='mb-4'>
-      <Card.Header className='bg-primary text-white fw-bolder'>Filter</Card.Header>
-      <Card.Body>
-        <Card.Title>Number of Product is 4 </Card.Title>
-      <Form.Select className='my-3' aria-label="Default select example">
-      <option>Size</option>
-      <option value="sm">sm</option>
-      <option value="m">M</option>
-      <option value="l">l</option>
-      <option value="xl">xl</option>
-      <option value="2xl">2xl</option>
-    </Form.Select>
-      <Form.Select className='my-3' aria-label="Default select example">
-      <option>Order By</option>
-      <option value="Latest">Latest</option>
-      <option value="Highest">Highest</option>
-      <option value="Lowest">Lowest</option>
-      
-    </Form.Select>
-      </Card.Body>
-    </Card>
+      <Col md="12" className="my-4">
+        <Card>
+          <Card.Header className="bg-primary text-white fw-bolder">
+            Filter
+          </Card.Header>
+          <Card.Body>
+            <Card.Title>
+              Number of Products is {data.products.length}
+            </Card.Title>
+            <label>size</label>
+            <Form.Select
+              value={size}
+              onChange={handelFilterBySize}
+              aria-label="Default select example"
+              className="mb-4"
+            >
+              <option value="all">ALL</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+              <option value="xl">XL</option>
+              <option value="2xl">2X</option>
+            </Form.Select>
+            <label>Order</label>
+            <Form.Select
+              value={sort}
+              onChange={handelFilterByOrder}
+              aria-label="Default select example"
+            >
+              <option>Order</option>
+              <option value="Latest">Latest</option>
+
+              <option value="Lowest">Lowest</option>
+              <option value="Highest">Highest</option>
+            </Form.Select>
+          </Card.Body>
+        </Card>
+      </Col>
     </>
-  )
+  );
 }
 
-export default Filter
+export default Filter;

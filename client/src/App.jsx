@@ -1,22 +1,56 @@
 import "./App.css";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import { Col, Container, Row } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import Products from "./components/products/Products";
-import Filter from "./components/Filter/Filter";
 
 function App() {
+  const [products, setproducts] = useState(data.products);
+  const [size, setsize] = useState("");
+  const [sort, setsort] = useState("");
+
+  const handelFilterBySize = (e) => {
+    setsize(e.target.value);
+    if(e.target.value == "all"){
+      setproducts(data.products);
+      
+    }
+    else{
+      
+      let productsClone=[...products]
+    let newProduct = productsClone.filter(prod=> prod.size.indexOf(e.target.value) != -1)
+    setproducts(newProduct);
+    }
+    
+  };
+  const handelFilterByOrder = (e) => {
+    let order=e.target.value
+    setsort(e.target.value);
+    let productsClone=[...products]
+    let newProducts=productsClone.sort((a,b)=>{
+   
+      if(order == "Highest"){
+        return b.price -a.price
+      }else if(order == "Lowest"){
+        return a.price -b.price
+      }else {
+        return a.id < b.id ? 1 : -1 ;
+      }
+    })
+    setproducts(newProducts)
+  };
+
   return (
     <div className="layout">
       <Header />
       <main>
         <Container>
           <Row className="py-5">
-            <Col lg="4" md="12" sm="12">
-              <Filter/>
-            </Col>
-            <Col lg="8" md="12" sm="12">
+            <Col md="8" sm="7">
               <Products/>
+            </Col>
+            <Col md="4" sm="5">
+              filter
             </Col>
           </Row>
         </Container>
