@@ -15,7 +15,7 @@ const Products = () => {
         {products
           ? products.map((item) => {
               return (
-                <Col key={item.id} md="6" sm="12" className="mb-3">
+                <Col key={item.id} md="4" sm="6" className="mb-3">
                   <Card>
                     <Card.Img variant="top" src={item.image} />
                     <Card.Body >
