@@ -3,11 +3,15 @@ import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import { Container } from "react-bootstrap";
 import Products from "./components/products/Products";
-
+import Filter from "./components/Filter/Filter";
+import { useEffect, useState } from "react";
+import data from "./data.json";
+import Cart from "./components/cart/Cart";
 function App() {
   const [products, setproducts] = useState(data.products);
   const [size, setsize] = useState("");
   const [sort, setsort] = useState("");
+  const [cartItem, setcartItem] = useState( JSON.parse(localStorage.getItem("cart")) ||[]);
 
   const handelFilterBySize = (e) => {
     setsize(e.target.value);
@@ -40,19 +44,45 @@ function App() {
     setproducts(newProducts)
   };
 
+  const handelCartItems =(product)=>{
+      let cartClone =[...cartItem];
+      let isExist =false;
+      cartClone.forEach(p=>{
+        if(p.id == product.id){
+          p.qty++;
+          isExist =true;
+        }
+      })
+      if(!isExist){
+        cartClone.push({...product,qty:1})
+      }
+      setcartItem(cartClone);
+  }
+
+  const handelRmove =(product)=>{
+      const cartItemclone=[...cartItem];
+      let  newcart =cartItemclone.filter(p=> p.id != product.id)
+      setcartItem(newcart);
+  }
+
+    useEffect(() => {
+      localStorage.setItem("cart" ,JSON.stringify(cartItem))
+    }, [cartItem])
+    
   return (
     <div className="layout">
       <Header />
       <main>
         <Container>
-          <Row className="py-5">
-            <Col md="8" sm="7">
-              <Products/>
-            </Col>
-            <Col md="4" sm="5">
-              filter
-            </Col>
-          </Row>
+          <Filter
+          length={products.length}
+            size={size}
+            handelFilterBySize={handelFilterBySize}
+            handelFilterByOrder={handelFilterByOrder}
+            sort={sort}
+          />
+          <Products products={products} handelCartItems={handelCartItems}/>
+          <Cart cartItem={cartItem } handelRmove={handelRmove}/>
         </Container>
       </main>
       <Footer />

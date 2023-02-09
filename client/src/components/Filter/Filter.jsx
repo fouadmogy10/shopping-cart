@@ -2,7 +2,7 @@ import React from "react";
 import Card from "react-bootstrap/Card";
 import data from "../../data.json";
 import { Col, Form } from "react-bootstrap";
-function Filter({ size, handelFilterBySize, handelFilterByOrder, sort }) {
+function Filter({ size, handelFilterBySize, handelFilterByOrder, sort,length }) {
   return (
     <>
       <Col md="12" className="my-4">
@@ -12,7 +12,7 @@ function Filter({ size, handelFilterBySize, handelFilterByOrder, sort }) {
           </Card.Header>
           <Card.Body>
             <Card.Title>
-              Number of Products is {data.products.length}
+              Number of Products is {length}
             </Card.Title>
             <label>size</label>
             <Form.Select

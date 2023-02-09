@@ -2,7 +2,7 @@ import React from "react";
 import { Col, Row, Button, Card } from "react-bootstrap";
 import "../../css/products/product.css";
 import { words } from "../../words";
-const Products = ({products}) => {
+const Products = ({products,handelCartItems}) => {
   
 
   return (
@@ -22,7 +22,7 @@ const Products = ({products}) => {
                         <Card.Title> <span className="text-success fw-bolder">$</span> {item.price}</Card.Title>
                       </div>
 
-                      <Button variant="outline-primary mx-2 my-2">
+                      <Button onClick={()=>handelCartItems(item)} variant="outline-primary mx-2 my-2">
                         {words.addToCart}
                       </Button>
 
