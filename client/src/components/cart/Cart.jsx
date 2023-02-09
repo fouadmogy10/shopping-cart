@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import "../../css/checkout/checkout.css";
-
+import Zoom from 'react-reveal/Zoom';
 import Checkout from "../checkout/Checkout";
 
 function Cart({ cartItem, handelRmove }) {
@@ -36,6 +36,8 @@ function Cart({ cartItem, handelRmove }) {
             ? cartItem.map((item) => {
                 return (
                   <Col md="6" sm="12" key={item.id}>
+                    <Zoom top>
+
                     <div className="card mb-3 ">
                       <div className="row align-items-center">
                         <div className="col-3">
@@ -64,20 +66,24 @@ function Cart({ cartItem, handelRmove }) {
                         </div>
                       </div>
                     </div>
+                    </Zoom>
+
                   </Col>
                 );
               })
             : null}
+    <Zoom left>
 
           {cartItem.length > 0 ?(
               <div className="total py-3">
                 <h5 className="mx-4">Total : ${cartItem.reduce(
                     (acc,p) => {
-                    return acc + p.price * p.qty },0)}</h5>
+                        return acc + p.price * p.qty },0)}</h5>
                     <button onClick={()=>setshowform(true)} className="btn btn-outline-success">select products</button>
               </div>
             ):( <h5 className="mx-4">Total : 0</h5>)}
 
+            </Zoom>
             {/* checkout  */}
      {
         showform &&

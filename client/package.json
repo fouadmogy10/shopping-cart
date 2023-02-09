@@ -17,6 +17,7 @@
     "react-bootstrap": "^2.7.0",
     "react-dom": "^18.2.0",
     "react-modal": "^3.16.1",
+    "react-reveal": "^1.2.2",
     "sass": "^1.58.0"
   },
   "devDependencies": {

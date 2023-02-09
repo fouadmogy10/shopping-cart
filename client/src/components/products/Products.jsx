@@ -2,11 +2,13 @@ import React from "react";
 import { Col, Row, Button, Card } from "react-bootstrap";
 import "../../css/products/product.css";
 import { words } from "../../words";
+import Fade from 'react-reveal/Fade';
 const Products = ({products,handelCartItems}) => {
   
 
   return (
     <>
+        <Fade left cascade>
       <Row>
 
       
@@ -32,8 +34,9 @@ const Products = ({products,handelCartItems}) => {
                 </Col>
               );
             })
-          : null}
+            : null}
       </Row>
+            </Fade>
       
     </>
   );
